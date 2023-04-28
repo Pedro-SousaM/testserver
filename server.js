@@ -5,7 +5,7 @@ app.get('/fimlList', function(req, res) {
   console.log('i receive a GET request');
 
   var tryFetch = {myString: 'I am working fetch'};
-
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.json(tryFetch)
 })
 
