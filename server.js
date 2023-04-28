@@ -12,7 +12,7 @@ var imgs = []
 			let x = 0 
 			let count = -1 
 			let count2 = -1
-			for (x; x < 2; x++) {  
+			for (x; x < 20; x++) {  
 				$.get(url).then(async function (rep) { 
 					count++
 					return await $.get('https://graph.instagram.com/' + rep.data[count].id + '?fields=media_type,media_url&access_token=' + token)
