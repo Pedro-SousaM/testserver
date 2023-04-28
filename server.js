@@ -6,22 +6,16 @@ const dom = new jsdom.JSDOM("")
 const $ = require('jquery')(dom.window) 
 const port = process.env.PORT || 3001;
 var imgs = []
-		$(function () {
-			const token = process.env.TOKEN
-			const url = "https://graph.instagram.com/6053160891434854/media?fields=id&access_token=" + token
-			let x = 0 
-			let count = -1 
-			let count2 = -1
-			for (x; x < 20; x++) {  
-				$.get(url).then(async function (rep) { 
-					count++
-					return await $.get('https://graph.instagram.com/' + rep.data[count].id + '?fields=media_type,media_url&access_token=' + token)
-				}
-				).then((rep) => { 
-					count2++
-					imgs.push(rep.media_url)
-				})
-			}
+	$(function () {
+		const token = process.env.TOKEN
+		const url = "https://graph.instagram.com/6053160891434854/media?fields=id&access_token=" + token
+		let x = 0 
+		for (x; x < 20; x++) {  
+		$.get(url).then(async function (rep) { 
+		return await $.get('https://graph.instagram.com/' + rep.data[count].id + '?fields=media_type,media_url&access_token=' + token)
+		}).then((rep) => { 
+			imgs.push(rep.media_url)
+			})}
 		})  
 
 setTimeout(()=>{app.get('/fimlList', function(req, res) {
