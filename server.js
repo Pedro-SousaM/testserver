@@ -4,7 +4,7 @@ const port = process.env.PORT || 3001;
 app.get('/fimlList', function(req, res) {
   console.log('i receive a GET request');
 
-  var tryFetch = {myString: 'I am working fetch'};
+  var tryFetch = {myString: 'É tetraaaaaa !!!!!!!!!!!'};
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.json(tryFetch)
 })
