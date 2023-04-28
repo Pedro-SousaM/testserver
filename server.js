@@ -7,7 +7,7 @@ const $ = require('jquery')(dom.window)
 const port = process.env.PORT || 3001;
 var imgs = []
 		$(function () {
-			const token = process.env.token1
+			const token = process.env.TOKEN
 			const url = "https://graph.instagram.com/6053160891434854/media?fields=id&access_token=" + token
 			let x = 0 
 			let count = -1 
