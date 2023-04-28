@@ -4,7 +4,7 @@ var app = express();
 const jsdom = require('jsdom')
 const dom = new jsdom.JSDOM("")
 const $ = require('jquery')(dom.window) 
- 
+const port = process.env.PORT || 3001;
 let imgs = ['','']
 		$(function () {
 			const token = 'IGQVJVWFRNYzZAMM1ZADTG1aUG1HWW4xLTBNTkMtMzV0UEJ0d1BuaFZABUzVvZAUxucHdsN0g2c1dLUWt1TktvLXhLYS0zc2NmN1FlSXo5ak42dDNDRXRmbTBidUFDN2xKdzk4bFlfODhDWWxsUWxiYlNLQgZDZD'
@@ -25,12 +25,12 @@ let imgs = ['','']
 			}
 		})  
 
-const port = process.env.PORT || 3001;
-app.get('/fimlList', function(req, res) {
+setTimeout(()=>{app.get('/fimlList', function(req, res) {
   console.log('i receive a GET request');
   res.setHeader("Access-Control-Allow-Origin", "*")
   res.json(imgs)
-})
+})},5000)
+
 app.listen(port, () => {
   console.log(`listening on port ${port}`); 
 })
