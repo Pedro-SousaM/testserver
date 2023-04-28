@@ -1,13 +1,36 @@
 var express = require('express');
-var app = express();
+var app = express();  
+
+const jsdom = require('jsdom')
+const dom = new jsdom.JSDOM("")
+const $ = require('jquery')(dom.window) 
+ 
+let imgs = ['','']
+		$(function () {
+			const token = 'IGQVJVWFRNYzZAMM1ZADTG1aUG1HWW4xLTBNTkMtMzV0UEJ0d1BuaFZABUzVvZAUxucHdsN0g2c1dLUWt1TktvLXhLYS0zc2NmN1FlSXo5ak42dDNDRXRmbTBidUFDN2xKdzk4bFlfODhDWWxsUWxiYlNLQgZDZD'
+			const url = "https://graph.instagram.com/6053160891434854/media?fields=id&access_token=" + token
+			let x = 0 
+			let count = -1 
+			let count2 = -1
+			for (x; x < 2; x++) {  
+				$.get(url).then(async function (rep) { 
+					count++
+					return await $.get('https://graph.instagram.com/' + rep.data[count].id + '?fields=media_type,media_url&access_token=' + token)
+				}
+				).then((rep) => { 
+					count2++
+					imgs[count2]=rep.media_url
+					console.log(imgs[count2]) 
+				})
+			}
+		})  
+
 const port = process.env.PORT || 3001;
 app.get('/fimlList', function(req, res) {
   console.log('i receive a GET request');
-
-  var tryFetch = {myString: 'É tetraaaaaa !!!!!!!!!!!'};
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.json(tryFetch)
+  res.setHeader("Access-Control-Allow-Origin", "*")
+  res.json(imgs)
 })
-
-app.listen(port);
-console.log('Server running on port '+port);
+app.listen(port, () => {
+  console.log(`listening on port ${port}`); 
+})
