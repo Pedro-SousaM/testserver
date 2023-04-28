@@ -5,7 +5,7 @@ const jsdom = require('jsdom')
 const dom = new jsdom.JSDOM("")
 const $ = require('jquery')(dom.window) 
 const port = process.env.PORT || 3001;
-let imgs = ['','']
+var imgs = []
 		$(function () {
 			const token = 'IGQVJVWFRNYzZAMM1ZADTG1aUG1HWW4xLTBNTkMtMzV0UEJ0d1BuaFZABUzVvZAUxucHdsN0g2c1dLUWt1TktvLXhLYS0zc2NmN1FlSXo5ak42dDNDRXRmbTBidUFDN2xKdzk4bFlfODhDWWxsUWxiYlNLQgZDZD'
 			const url = "https://graph.instagram.com/6053160891434854/media?fields=id&access_token=" + token
@@ -19,7 +19,7 @@ let imgs = ['','']
 				}
 				).then((rep) => { 
 					count2++
-					imgs[count2]=rep.media_url
+					imgs.push(rep.media_url)
 					console.log(imgs[count2]) 
 				})
 			}
