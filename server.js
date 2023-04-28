@@ -20,7 +20,6 @@ var imgs = []
 				).then((rep) => { 
 					count2++
 					imgs.push(rep.media_url)
-					console.log(imgs[count2]) 
 				})
 			}
 		})  
