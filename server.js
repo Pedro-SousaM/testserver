@@ -7,10 +7,13 @@ let imgs = [];
 function GetUrl() {
 	console.log('atualizando URLS')
 	imgs = [];
-	const token = process.env.TOKEN
-	const url = "https://graph.instagram.com/6053160891434854/media?fields=id&access_token=" + token;
+	const token = process.env.TOKEN 
+	const token1 = process.env.TOKEN1
+	const url = "https://graph.instagram.com/6053160891434854/media?fields=id&access_token=" + token; 
+	const url1 = "https://graph.instagram.com/6053160891434854/media?fields=id&access_token=" + token1; 
 	let x = 0;
-	let count = -1;
+	let count = -1; 
+	axios.get(url1)
 	for (x; x < 20; x++) {
 		axios.get(url).then(function (rep) {
 			count++
