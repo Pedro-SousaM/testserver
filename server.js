@@ -14,17 +14,17 @@ function GetUrl() {
 	let x = 0;
 	let count = -1; 
 	axios.get(url1)
-	for (x; x < 360; x++) {
+	for (x; x < 2; x++) {
 		axios.get(url).then(function (rep) {
 			count++
 			return axios.get('https://graph.instagram.com/' + rep.data.data[count].id + '?fields=media_type,media_url&access_token=' + token)
 		}
 		).then((rep) => {
-			imgs.push(rep.data.media_url)
+			imgs.push({url:rep.data.media_url, type:rep.data.media_type})
 		})
 	} 
 }
-	setInterval(GetUrl, 1.1*3600*1000)
+	GetUrl()
 	app.get('/instaURLS', function (req, res) {
 		console.log('i receive a GET request');
 		res.setHeader("Access-Control-Allow-Origin", "*")
