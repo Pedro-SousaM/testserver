@@ -14,7 +14,7 @@ function GetUrl() {
 	let x = 0;
 	let count = -1; 
 	axios.get(url1)
-	for (x; x < 2; x++) {
+	for (x; x < 20; x++) {
 		axios.get(url).then(function (rep) {
 			count++
 			return axios.get('https://graph.instagram.com/' + rep.data.data[count].id + '?fields=media_type,media_url&access_token=' + token)
