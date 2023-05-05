@@ -29,7 +29,9 @@ function GetUrl() {
 		let alt=2 
 		let lar=16 
 		let com=24  
-		let w = 0.2
+		let w = 0.2 
+		console.log(req.query.giga=='true') 
+		console.log(req.query.giga==true)
 			if(req.query.giga=='true'){
 			alt =6 
 			lar = 20 
