@@ -27,7 +27,7 @@ function GetUrl() {
 
 	app.get('/frete',function(req,res){ 
 	res.setHeader("Access-Control-Allow-Origin", "*")	
-	console.log('Get parameter received are: ',req.body)
+	console.log('Get parameter received are: ',req)
   	res.json(['olá'])
 	})
 	app.get('/instaURLS', function (req, res) {
