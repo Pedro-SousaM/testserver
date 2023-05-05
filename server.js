@@ -42,7 +42,7 @@ function GetUrl() {
 		}
 	};
 	axios.request(options).then(function (response) {
-		res.json(response.data[0].price)
+		res.json(response.data)
 	})
 })
 	app.get('/instaURLS', function (req, res) {
