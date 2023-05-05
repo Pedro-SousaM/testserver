@@ -25,12 +25,12 @@ function GetUrl() {
 	}}
 	app.get('/frete', function (req, res) {
 		res.setHeader("Access-Control-Allow-Origin", "*")
-		console.log('Get parameter received are: ', req.query.frete, req.query.G) 
+		console.log('Get parameter received are: ', req.query.frete, req.query.giga) 
 		let alt=2 
 		let lar=16 
 		let com=24  
 		let w = 0.2
-			if(req.query.G==true){
+			if(req.query.giga){
 			alt =6 
 			lar = 20 
 			com = 30 
