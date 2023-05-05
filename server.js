@@ -30,7 +30,7 @@ function GetUrl() {
 		let lar=16 
 		let com=24  
 		let w = 0.2
-			if(req.query.giga){
+			if(req.query.giga=='true'){
 			alt =6 
 			lar = 20 
 			com = 30 
