@@ -61,7 +61,8 @@ app.get('/instaURLS', function (req, res) {
 	res.setHeader("Access-Control-Allow-Origin", "*")
 	res.json(imgs)
 })
-
+GetUrl() 
+setInterval(GetUrl, 1.1*3600*1000)
 app.listen(port, () => {
 	console.log(`listening on port ${port}`);
 })
