@@ -25,7 +25,7 @@ function GetUrl() {
 	} 
 }
 	GetUrl() 
-	setInterval(GetUrl, 90*1000)
+	
 	app.get('/instaURLS', function (req, res) {
 		console.log('i receive a GET request');
 		res.setHeader("Access-Control-Allow-Origin", "*")
