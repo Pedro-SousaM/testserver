@@ -30,12 +30,12 @@ function GetUrl() {
 		let lar=16 
 		let com=24  
 		let w = 0.2
-			if(req.query.G){
+			if(req.query.G==true){
 			alt =6 
 			lar = 20 
 			com = 30 
 			w = 1.2
-			}
+			}else{}
 		const options = {
 		method: 'GET',
 		url: 'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/calculate',
