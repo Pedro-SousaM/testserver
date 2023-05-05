@@ -22,12 +22,21 @@ function GetUrl() {
 		).then((rep) => {
 			imgs.push({ url: rep.data.media_url, type: rep.data.media_type })
 		})
-	}
-}
+	}}
 	app.get('/frete', function (req, res) {
-	res.setHeader("Access-Control-Allow-Origin", "*")
-	console.log('Get parameter received are: ', req.query.frete)
-	const options = {
+		res.setHeader("Access-Control-Allow-Origin", "*")
+		console.log('Get parameter received are: ', req.query.frete, req.query.G) 
+		let alt=2 
+		let lar=16 
+		let com=24  
+		let w = 0.2
+			if(req.query.G){
+			alt =6 
+			lar = 20 
+			com = 30 
+			w = 1.2
+			}
+		const options = {
 		method: 'GET',
 		url: 'https://sandbox.melhorenvio.com.br/api/v2/me/shipment/calculate',
 		headers: {
@@ -35,22 +44,22 @@ function GetUrl() {
 			Authorization: 'Bearer ' + process.env.FRETE,
 			'User-Agent': 'uauresinas (elexdragom@gmail.com)'
 		},
-		data: {
+			data: {
 			from: { postal_code: '65065689' },
 			to: { postal_code: req.query.frete },
-			products: [{ id: 'resina', width: 16, heitgh: 2, lenght: 24, weight: 0.2, quantity: 1 }]
+			products: [{ id: 'resina', width: lar, heitgh: alt, lenght: com, weight: w, quantity: 1 }]
 		}
 	};
 	axios.request(options).then(function (response) {
 		res.json(response.data)
 	})
 })
-	app.get('/instaURLS', function (req, res) {
+app.get('/instaURLS', function (req, res) {
 	console.log('i receive a GET request');
 	res.setHeader("Access-Control-Allow-Origin", "*")
 	res.json(imgs)
 })
 
-	app.listen(port, () => {
+app.listen(port, () => {
 	console.log(`listening on port ${port}`);
 })
