@@ -25,7 +25,8 @@ function GetUrl() {
 	} 
 }
 
-	app.get('/frete',function(req,res){
+	app.get('/frete',function(req,res){ 
+	res.setHeader("Access-Control-Allow-Origin", "*")	
 	console.log('Get parameter received are: ',req.body)
   	res.json(['olá'])
 	})
