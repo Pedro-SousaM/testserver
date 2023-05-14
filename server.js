@@ -6,7 +6,7 @@ const port = process.env.PORT || 3001;
 let imgs = [];
 let catvids = []
 function GetUrl() {
-  console.log('atualizando URLS')
+  console.log('atualizando URLS da imagens')
   imgs = [];
   const token = process.env.TOKEN
   const token1 = process.env.TOKEN1
@@ -62,7 +62,9 @@ app.get('/frete', function (req, res) {
 }) 
 
 //catvids 
-function GetVideo() {
+function GetVideo() {  
+  console.log('atualizando URLs dos vídeos')
+  catvids = []
   let x = 0
   let count = -1
   let LID = '121998'
@@ -86,7 +88,7 @@ function GetVideo() {
 
 //callfunctions
 setInterval(GetUrl, 1.1 * 3600 * 1000)
-GetVideo()
+setInterval(GetVideo,  30 * 1000)
 
 //endpoints
 app.get('/instaURLS', function (req, res) {
