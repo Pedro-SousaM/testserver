@@ -89,7 +89,7 @@ function GetVideo() {
 //callfunctions 
 GetUrl()
 setInterval(GetUrl, 1.1 * 3600 * 1000)
-setInterval(GetVideo,  30 * 1000)
+setInterval(GetVideo,  3600 * 1000)
 
 //endpoints
 app.get('/instaURLS', function (req, res) {
