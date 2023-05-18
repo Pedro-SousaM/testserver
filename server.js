@@ -87,7 +87,8 @@ function GetVideo() {
 }
 
 //callfunctions 
-GetUrl()
+GetUrl() 
+GetVideo()
 setInterval(GetUrl, 1.1 * 3600 * 1000)
 setInterval(GetVideo,  3600 * 1000)
 
