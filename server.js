@@ -81,7 +81,7 @@ function GetVideo() {
   axios.request(options)
     .then((response) => {
       for (x; x < Number(response.data.items.length); x++) {
-        count++ , catvids.push({ num: response.data.totalItems, url: `https://${PZ}.b-cdn.net/${response.data.items[count].guid}/play_480p.mp4` })
+        count++ , catvids.push({ num: response.data.totalItems, url: `https://${PZ}.b-cdn.net/${response.data.items[count].guid}/play_360p.mp4` })
       }}
     )
 }
