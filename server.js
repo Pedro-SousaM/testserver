@@ -4,7 +4,12 @@ var app = express();
 
 const port = process.env.PORT || 3001;
 let imgs = [];
-let catvids = []
+let vids = {
+  catvids:[], 
+  customize: [], 
+  chavids: [], 
+  
+}
 function GetUrl() {
   console.log('atualizando URLS da imagens')
   imgs = [];
@@ -62,14 +67,13 @@ app.get('/frete', function (req, res) {
 }) 
 
 //catvids 
-function GetVideo() {  
+function GetVideo(LID, Key, array) {  
   console.log('atualizando URLs dos vídeos')
-  catvids = []
+  let TrueArray = eval(`vids.${array}`)  
+  TrueArray.length = 0
   let x = 0
   let count = -1
-  let LID = '121998'
-  let PZ = 'vz-c17c8b3f-285'
-  let Key = process.env.CATKEY
+  let PZ = 'vz-c17c8b3f-285' 
   const options = {
     method: 'GET',
     url: 'https://video.bunnycdn.com/library/' + LID + '/videos?page=1&itemsPerPage=100&orderBy=date',
@@ -79,18 +83,18 @@ function GetVideo() {
     }};
 
   axios.request(options)
-    .then((response) => {
-      for (x; x < Number(response.data.items.length); x++) {
-        count++ , catvids.push({ num: response.data.totalItems, url: `https://${PZ}.b-cdn.net/${response.data.items[count].guid}/play_360p.mp4` })
+    .then((response) => {  
+      for (x; x < Number(response.data.items.length); x++) {  
+        count++ , TrueArray.push({ url: `https://${PZ}.b-cdn.net/${response.data.items[count].guid}/play_360p.mp4`})
       }}
     )
 }
 
-//callfunctions 
-GetUrl() 
-GetVideo()
+//callfunctions
 setInterval(GetUrl, 1.1 * 3600 * 1000)
-setInterval(GetVideo,  3600 * 1000)
+GetVideo('121998', '9aaee489-9dba-4a87-9881ce50166b-96a4-4c97', 'catvids')  
+
+setTimeout(()=>{console.log(vids)}, 4000)
 
 //endpoints
 app.get('/instaURLS', function (req, res) {
@@ -101,7 +105,7 @@ app.get('/instaURLS', function (req, res) {
 app.get('/cats', function (req, res) {
   console.log('i receive a GET request');
   res.setHeader("Access-Control-Allow-Origin", "*")
-  res.json(catvids)
+  res.json(vids.catvids)
 })
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
