@@ -90,7 +90,8 @@ function GetVideo(LID, Key, array) {
     )
 }
 
-//callfunctions
+//callfunctions 
+GetUrl()
 setInterval(GetUrl, 1.1 * 3600 * 1000)
 GetVideo('121998', '9aaee489-9dba-4a87-9881ce50166b-96a4-4c97', 'catvids')  
 
